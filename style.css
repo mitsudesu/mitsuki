@@ -1,0 +1,904 @@
+@charset "UTF-8";
+/*/////////////////////////////////////
+//////////////共通/////////////////////
+////////////////////////////////////*/
+body {
+  font: 14px/1.9 'Noto Sans JP', Arial, Verdana, 游ゴシック, YuGothic, 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', メイリオ, Meiryo, sans-serif;
+  font-weight: 300;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  color: #000;
+  width: 100%;
+  background-color: #FFFFFF;
+}
+a:active, a:focus, input:active, input:focus {
+  outline: 0;
+}
+li {
+  list-style: none;
+}
+ul {
+  padding-inline-start: 0;
+}
+.inner {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+@media screen and (min-width: 1800px){
+  .inner {
+    width: 1600px;
+  }
+}
+.all-in-one {
+  width: 100%;
+  overflow: hidden;
+}
+a:link {
+  color: #000;
+}
+a:visited {
+  color: #000;
+}
+/*------------------------------------
+--font-responsive---------------------
+------------------------------------*/
+
+@media screen and (min-width:1801px){
+  html{
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 1800px){
+  /* 1800px以下 */
+  html {
+    font-size: 0.9vw;
+  }
+}
+@media screen and (max-width:768px){
+  /* タブレット 768px以下 */
+  html{
+    font-size: 2vw;
+  }
+}
+@media screen and  (max-width:480px){
+  /* スマートフォン 480px以下 */
+  html{
+    font-size: 2.2vw;
+  }
+}
+.top-font,
+.top-font2 {
+  font-size: 3.75rem;
+}
+@media screen and (max-width:768px){
+  .top-font,
+  .top-font2 {
+    font-size: 2rem;
+  }
+}
+.name,
+.dname {
+  font-size: 1.875rem
+}
+.price,
+.contents-food,
+.sweet-contents,
+.dprice,
+.sweet-contents2 {
+  font-size: 1.5625rem;
+}
+.tax {
+  font-size: 1.4375rem
+}
+.section-title {
+  font-size: 3.125rem;
+  font-family: 'Hachi Maru Pop', cursive;
+  margin-left: 5%;
+  margin-bottom: 4%;
+  font-weight: 1000;
+  padding: 0.25em 0.5em;/*上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: transparent;/*背景透明に*/
+  border-left: solid 5px #ff9933;/*左線*/
+}
+.sub-section-title {
+  font-size: 3.125rem;
+  font-family: 'Hachi Maru Pop', cursive;
+  margin-left: 5%;
+  margin-bottom: 4%;
+  font-weight: 1000;
+  padding: 0.25em 0.5em;/*上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: transparent;/*背景透明に*/
+  border-left: solid 5px #339933;/*左線*/
+}
+.en-name {
+  font-size: 1.875rem;
+}
+#drink-section {
+  margin-top: 10%;
+}
+.nav p:hover {
+	color:#de3400; 	/*リンクにマウスが乗ったらフォント色を変更する*/
+}
+.nav2 p:hover {
+  color:#de3400; 	/*リンクにマウスが乗ったらフォント色を変更する*/
+}
+@media screen and (max-width: 768px){
+  .inner {
+    padding-top: 50px;
+  }
+}
+/*-----------------------------------------
+------------------------------------------*/
+
+/*TOP*
+------------------------------------------
+------------------------------------------*/
+.section {
+  margin-bottom: 10%;
+}
+.top-flex {
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 768px){
+  .top-flex {
+    flex-flow: column;
+}
+  .food-img {
+    order: 1;
+  }
+  .txt-flex {
+    order: 2;
+  }
+}
+.top-title {
+  font-family: 'Caveat', cursive;
+  font-size: 3.125rem;
+  font-weight: 600;
+}
+.txt-flex {
+  font-family: 'Kosugi', sans-serif;
+  font-size: 1.5625rem;
+  margin: 5%;
+}
+@media screen and (max-width: 768px){
+  .txt-flex {
+    margin: 0 0 20% 0;
+  }
+}
+.txt-flex a {
+  text-decoration: none;
+  color: #ff9933;
+}
+.top-title{
+  position: relative;
+  padding: 0.3em;
+}
+.top-title:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 7px;
+  background: repeating-linear-gradient(-45deg, skyblue, skyblue 2px, white 2px, white 4px);
+}
+
+a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+a::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #f93;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform .3s;
+}
+a:hover::after {
+  transform: scale(1, 1);
+}
+
+.food-img img {
+  width: 100%;
+  border-radius: 70px;
+}
+/*header*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background: #fff;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+/*------------------------------
+
+  ここから下がハンバーガーメニュー
+  に関するCSS
+
+------------------------------*/
+
+/* チェックボックスは非表示に */
+.drawer-hidden {
+  display: none;
+}
+
+/* ハンバーガーアイコンの設置スペース */
+.drawer-open {
+  display: flex;
+  height: 60px;
+  width: 60px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 100;/* 重なり順を一番上に */
+  cursor: pointer;
+}
+
+/* ハンバーガーメニューのアイコン */
+.drawer-open span,
+.drawer-open span:before,
+.drawer-open span:after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 25px;
+  border-radius: 3px;
+  background: #333;
+  transition: 0.5s;
+  position: absolute;
+}
+
+/* 三本線のうち一番上の棒の位置調整 */
+.drawer-open span:before {
+  bottom: 8px;
+}
+
+/* 三本線のうち一番下の棒の位置調整 */
+.drawer-open span:after {
+  top: 8px;
+}
+
+/* アイコンがクリックされたら真ん中の線を透明にする */
+#drawer-check:checked ~ .drawer-open span {
+  background: rgba(255, 255, 255, 0);
+}
+
+/* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
+#drawer-check:checked ~ .drawer-open span::before {
+  bottom: 0;
+  transform: rotate(45deg);
+}
+
+#drawer-check:checked ~ .drawer-open span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* メニューのデザイン*/
+.drawer-content {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 100%;/* メニューを画面の外に飛ばす */
+  z-index: 99;
+  background: #fff;
+  transition: .5s;
+}
+
+/* アイコンがクリックされたらメニューを表示 */
+#drawer-check:checked ~ .drawer-content {
+  left: 0;/* メニューを画面に入れる */
+}
+@media screen and (min-width: 769px){
+.drawer {
+  display: none;
+}
+}
+.drawer-item a {
+  font-size: 3.25rem;
+  font-family: 'Caveat', cursive;
+}
+.drawer-item {
+  margin-left: 30px;
+}
+.drawer-list {
+  margin-top: 50px;
+}
+span {
+  display: inline-block;
+  margin-top: 20px;
+  text-align: center;
+}
+/*.wrap {
+  width: 1000px;
+  margin: 0 auto;
+}*/
+@media screen and (min-width: 769px){
+.logo-img {
+  margin: 0 auto;
+  width: 145px;
+  height: 145px;
+}
+}
+.nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+@media screen and (max-width: 768px){
+  .nav {
+    display: none;
+  }
+  .logo-img img {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+  }
+  .logo-img {
+    text-align: center;
+  }
+}
+.main-img {
+  width: 904;
+  height: 561;
+}
+.main {
+  text-align: center;
+}
+.nav a {
+  text-decoration: none;
+}
+.nav p {
+  font-size: 1.8rem;
+  font-weight; 700;
+  font-family: 'Original Surfer', 'Kosugi', sans-serif, cursive;
+  letter-spacing: .8px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.nav span {
+  font-family: 'Kiwi Maru', serif;
+}
+/*middle*/
+.header-below {
+  position: relative;
+}
+/*footer*/
+.nav2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 27px;
+}
+.nav2 a {
+  text-decoration: none;
+}
+.nav2 li {
+  margin-left: 100px;
+}
+.nav2 p {
+  font-family: 'Kiwi Maru', serif;
+  font-size: 1.5rem;
+}
+.col-left {
+  text-align: center;
+}
+.col-left .txt {
+  font-size: 1.1rem;
+}
+.footer-box {
+  display: flex;
+  justify-content: center;
+  gap: 20%;
+}
+.page-top {
+  right: 10px;
+  bottom: 10px;
+  width: 90px;
+  height: 90px;
+  margin: 0;
+  position: fixed;
+}
+footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  border-top: 5px solid #8b0304;
+}
+footer {
+  position: relative;
+  padding-top: 150px;
+}
+@media screen and (max-width: 768px){
+  .logo img {
+    width: 100px;
+    height: 100px;
+  }
+  .col-left {
+    display: flex;
+    justify-content: center;
+  }
+  .footer-table {
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .footer-box {
+    flex-flow: column;
+  }
+  .nav2 li {
+    margin-left: 0;
+    margin-right: 10%;
+  }
+}
+/*header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  border-top: 5px solid #8b0304;
+}*/
+.col-right th{
+  margin: 30px;
+}
+.main-img {
+  width: 100%;
+  height: auto;
+}
+.main {
+  position: relative;
+}
+.top-font {
+  position: absolute;
+  font-weight: 1000;
+  font-family: 'Sawarabi Mincho', sans-serif;
+  color: #ffffff;
+  top: 50%;
+  left: 50%;
+  margin:0;
+  padding:0;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width: 100%;
+    background-color: #cc7965;
+}
+.top-font2 {
+  position: absolute;
+  font-weight: 1000;
+  font-family: 'Sawarabi Mincho', sans-serif;
+  color: #ffffff;
+  top: 60%;
+  left: 50%;
+  margin:0;
+  padding:0;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  width: 100%;
+  background-color: #cc7965;
+}
+.section1 {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 70px;
+}
+.section2 {
+  width: 100%;
+  max-width: 1200px;
+  border-radius: 70px;
+}
+.contents-food2 {
+  vertical-align: middle;
+  font-family: 'Kosugi', sans-serif;
+  font-size: 2.5rem;
+}
+/*menu
+-----------------------------------------
+----------------------------------------*/
+.tel {
+  color: #ff0000;
+}
+.call {
+  text-decoration: underline;
+  color: #00e;
+}
+.call:hover {
+  color: #00e;
+}
+.chuui {
+  font-family: 'Kosugi', sans-serif;
+  font-size: 1.5625rem;
+  color: #f69679;
+}
+.sand-res {
+  font-size: 3.125rem;
+  font-family: 'Kosugi', sans-serif;
+  margin-left: 5%;
+  margin-bottom: 4%;
+  font-weight: 1000;
+  padding: 0.25em 0.5em;
+}
+.main-img,
+.garden-img,
+.menu-bg,
+.sand-img {
+  width: 904px;
+  height: 561px;
+}
+.main-img {
+  width: 100%;
+  height: auto;
+}
+.main {
+  position: relative;
+}
+.menu-top-img {
+  background-repeat: repeat-x;
+  background-image: url("../img/menu-banner.jpg");
+  width: 100%;
+  height: 400px;
+}
+.menu-top-font {
+  position: absolute;
+  top: 50%;
+  left:10%;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #fff;
+  font-family: 'Caveat', cursive;
+  font-size: 100px;
+  display: block;
+  margin-block-start: 0;
+  margin-block-end:0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  line-height: 0.5em;
+  font-size: 7rem;
+}
+.food-menu {
+  display: flex;
+  gap: 50px;
+  margin: 5%;
+  align-items: flex-start;
+}
+.sand-img {
+  width: 100%;
+  height: auto;
+}
+p {
+  display: block;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+.name,
+.dname {
+  font-family: 'Kiwi Maru', serif;
+}
+.tax {
+    color: #999;
+}
+.price,
+.contents-food,
+.sweet-contents,
+.sweet-contents2 {
+  margin-top: 25px;
+  font-family: 'Kosugi', sans-serif;
+}
+.dprice {
+  font-family: 'Kosugi', sans-serif;
+  margin-left: 10px;
+}
+@media screen and (max-width: 768px){
+  .food-img {
+    order: 1;
+  }
+  .text {
+    order: 2;
+    margin-bottom: 20%;;
+  }
+  .food-menu {
+    flex-direction: column;
+    gap: 0;
+  }
+  .food-img {
+    text-align: center;
+    width: 100%;
+  }
+  .food-menu {
+    gap: 0;
+  }
+  .price,
+  .contents-food {
+    margin-top: 10px;
+  }
+  .drink-flex {
+    margin-bottom: 20%;
+  }
+}
+
+.drink-menu {
+  display: flex;
+  margin-left: 5%;
+  align-items: flex-start;
+  gap: 5px;
+  margin-bottom: 3%;
+}
+.en-name {
+  color: #008b50;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
+  margin-left: 20px;
+}
+.sweet-contents {
+  margin-left: 5%;
+  margin-bottom: 5%;
+}
+/*garden
+------------------------------------------
+-----------------------------------------*/
+.left-garden {
+  text-align: center;
+}
+.garden-title {
+  font-size: 3.125rem;
+  font-family: 'Hachi Maru Pop', cursive;
+  margin-bottom: 4%;
+  font-weight: 1000;
+  padding: 0.25em 0.5em;
+  color: #494949;
+  background: transparent;
+  border-left: solid 5px #ff9933;
+}
+.garden-des {
+  font-size: 3.125rem;
+  font-family: 'Hachi Maru Pop', cursive;
+  margin-bottom: 4%;
+  font-weight: 1000;
+  padding: 0.25em 0.5em;
+  color: #494949;
+  background: transparent;
+  border-left: solid 5px #339933;
+}
+.garden-img {
+  border-radius: 70px;
+}
+#garden-section {
+  text-align: center;
+}
+.garden-img {
+  width: 100%;
+  height: auto;
+}
+#garden-section p{
+  font-family: 'Kosugi', sans-serif;
+  font-size: 1.5625rem;
+  margin-top: 2%;
+  margin-bottom: 10%;
+}
+.garden-flex {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+@media screen and (max-width: 768px){
+  .garden-flex {
+    flex-flow: column;
+  }
+  .garden-img2 {
+    width: 60%;
+  }
+  .wanchan {
+    margin-bottom: 20%;
+  }
+}
+.garden-img2 {
+  width: 70%;
+  border-radius: 70px;
+}
+.kasane {
+  position: relative;
+}
+.number:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 7px;
+  background: repeating-linear-gradient(-45deg, skyblue, skyblue 2px, white 2px, white 4px);
+}
+.left-garden p,
+.right-garden p {
+  font-family: 'Kosugi', sans-serif;
+  margin-top: 2%;
+}
+@media screen and (max-width: 768px){
+  .left-garden {
+    margin-bottom: 15%;
+  }
+}
+.wanchan {
+  font-size: 1.625rem;
+  width: 70%;
+  margin: 2% auto;
+}
+.number {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  font-family: 'Kosugi', sans-serif;
+  font-weight: 200;
+  font-size: 3.125rem;
+  background-color: #fff;
+}
+.garden-top-img {
+  background-repeat: repeat-x;
+  background-image: url(../img/garden-banner.jpg);
+  width: 100%;
+  height: 400px;
+}
+/*shop-info
+------------------------------------------
+-----------------------------------------*/
+.access-top-font2 {
+  position: absolute;
+  top: 50%;
+  left:10%;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #000;
+  font-family: 'Caveat', cursive;
+  font-size: 100px;
+  display: block;
+  margin-block-start: 0;
+  margin-block-end:0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  line-height: 0.5em;
+  font-size: 7rem;
+}
+.access-font {
+  text-align: center;
+  font-size: 30px;
+}
+.access-img {
+  width: 60%;
+}
+.img-box {
+  text-align: center;
+}
+table,
+.sub-title,
+.access-contents {
+  font-family: 'Kosugi', sans-serif;
+  font-size: 1.5625rem;
+}
+.access-contents {
+  margin-top:2%;
+}
+#section {
+  margin-bottom: 5%;
+}
+.access-top {
+  font-size: 3.125rem;
+  font-family: 'Hachi Maru Pop', cursive;
+  margin-bottom: 4%;
+  font-weight: 1000;
+  padding: 0.25em 0.5em;/*上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: transparent;/*背景透明に*/
+  border-left: solid 5px #ff9933;/*左線*/
+}
+.access-top-img {
+  background-repeat: repeat-x;
+  background-image: url(../img/shopinfo-banner.jpg);
+  width: 100%;
+  height: 400px;
+}
+.access-top-font {
+  position: absolute;
+  top: 50%;
+  left:10%;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #ffffff;
+  font-family: 'Caveat', cursive;
+  font-size: 100px;
+  display: block;
+  margin-block-start: 0;
+  margin-block-end:0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  line-height: 0.5em;
+  font-size: 7rem;
+}
+.sub-title {
+  margin-bottom: 2%;
+}
+.first-row th,
+.first-row td,
+.second-row th,
+.second-row td {
+  padding: 10px 20px;
+}
+.location-map {
+  width: 100%;
+  height: auto;
+}
+@media screen and (max-width: 768px){
+  iframe {
+    width: 80%;
+    height: auto;
+  }
+  iframe {
+    text-align: center;
+  }
+  .location-map {
+    margin: 0 auto;
+  }
+}
+.sweet-contents2 {
+  margin-bottom: 5%;
+}
+
+/*/////////////////////////////////////
+javascript//////////////////////////*/
+/* ボタンのスタイル */
+.page-top {
+  /* buttonタグのリセットCSS */
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+
+  /* ボタンの装飾 */
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #115582;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* 矢印のスタイル */
+.page-top::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  margin-bottom: -6px;
+  border-top: solid 3px #fff;
+  border-right: solid 3px #fff;
+  transform: rotate(-45deg);
+}
+
+/* ホバー時のスタイル */
+.page-top:hover {
+  transform: scale(1.1);
+}
